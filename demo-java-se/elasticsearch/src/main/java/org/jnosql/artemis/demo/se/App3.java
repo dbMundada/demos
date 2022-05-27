@@ -37,6 +37,7 @@ public class App3 {
         try (SeContainer container = SeContainerInitializer.newInstance().initialize()) {
             Random random = new Random();
             long id = random.nextLong();
+            String username = args[0];
 
             Address address = Address.builder()
                     .withCity("São Paulo")
@@ -53,7 +54,7 @@ public class App3 {
                     .build();
 
             ElasticsearchTemplate template = container.select(ElasticsearchTemplate.class).get();
-            Developer saved = template.insert(developer);
+            Developer saved = template.insert(developer, username);
 
             System.out.println("Developer saved" + saved);
             TimeUnit.SECONDS.sleep(2L);
