@@ -54,7 +54,7 @@ public class App3 {
                     .build();
 
             ElasticsearchTemplate template = container.select(ElasticsearchTemplate.class).get();
-            Developer saved = template.insert(developer, username);
+            Developer saved = template.insert(developer);
 
             System.out.println("Developer saved" + saved);
             TimeUnit.SECONDS.sleep(2L);
